@@ -8,6 +8,7 @@ const CriarCampeonato = () => {
   const [timeSelecionado, setTimeSelecionado] = useState("");
   const [timesSelecionados, setTimesSelecionados] = useState([]);
   const [error, setError] = useState("");
+  const [campeonatoCriado, setCampeonatoCriado] = useState(false);
 
   useEffect(() => {
     carregarTimes();
@@ -62,6 +63,10 @@ const CriarCampeonato = () => {
         }
       );
       console.log(response.data.message); // Mensagem de sucesso
+      setCampeonatoCriado(true);
+      setNomeCampeonato(""); // Limpa o campo de nome do campeonato
+      setTimesSelecionados([]); // Limpa a lista de times selecionados
+      setTimes([]); // Limpa a lista de times disponíveis
     } catch (error) {
       console.error("Erro ao criar campeonato:", error);
       // Trate o erro aqui
@@ -71,57 +76,61 @@ const CriarCampeonato = () => {
   return (
     <div className="criar-campeonato-container">
       <h2>Criar Campeonato</h2>
-      <form>
-        <div>
-          <label htmlFor="nomeCampeonato">Nome do Campeonato:</label>
-          <input
-            type="text"
-            id="nomeCampeonato"
-            name="nomeCampeonato"
-            value={nomeCampeonato}
-            onChange={(e) => setNomeCampeonato(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="times">Selecione um time:</label>
-          <select
-            id="times"
-            name="times"
-            value={timeSelecionado}
-            onChange={handleTimeChange}
-          >
-            <option value="">Selecione um time</option>
-            {times.map((time) => (
-              <option key={time.id} value={time.id}>
-                {time.nome}
-              </option>
-            ))}
-          </select>
-          <button type="button" onClick={handleAdicionarTime}>
-            Adicionar Time
+      {campeonatoCriado ? (
+        <p>Campeonato criado com sucesso!</p>
+      ) : (
+        <form>
+          <div>
+            <label htmlFor="nomeCampeonato">Nome do Campeonato:</label>
+            <input
+              type="text"
+              id="nomeCampeonato"
+              name="nomeCampeonato"
+              value={nomeCampeonato}
+              onChange={(e) => setNomeCampeonato(e.target.value)}
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="times">Selecione um time:</label>
+            <select
+              id="times"
+              name="times"
+              value={timeSelecionado}
+              onChange={handleTimeChange}
+            >
+              <option value="">Selecione um time</option>
+              {times.map((time) => (
+                <option key={time.id} value={time.id}>
+                  {time.nome}
+                </option>
+              ))}
+            </select>
+            <button type="button" onClick={handleAdicionarTime}>
+              Adicionar Time
+            </button>
+          </div>
+          {/* Listagem dos times selecionados */}
+          <div>
+            <h3>Times Selecionados:</h3>
+            <ul>
+              {timesSelecionados.map((time, index) => (
+                <li key={index}>
+                  {time.nome}
+                  <FaTrash
+                    style={{ marginLeft: "10px", cursor: "pointer" }}
+                    onClick={() => handleExcluirTime(index)}
+                  />
+                </li>
+              ))}
+            </ul>
+          </div>
+          {error && <p style={{ color: "red" }}>{error}</p>}
+          <button type="button" onClick={handleCriarCampeonato}>
+            Criar Campeonato
           </button>
-        </div>
-        {/* Listagem dos times selecionados */}
-        <div>
-          <h3>Times Selecionados:</h3>
-          <ul>
-            {timesSelecionados.map((time, index) => (
-              <li key={index}>
-                {time.nome}
-                <FaTrash
-                  style={{ marginLeft: "10px", cursor: "pointer" }}
-                  onClick={() => handleExcluirTime(index)}
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        <button type="button" onClick={handleCriarCampeonato}>
-          Criar Campeonato
-        </button>
-      </form>
+        </form>
+      )}
     </div>
   );
 };
