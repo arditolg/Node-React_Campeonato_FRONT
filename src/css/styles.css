@@ -1,0 +1,108 @@
+.dashboard-container {
+  display: flex;
+  background-color: #f0f0f0;
+  padding: 20px;
+  height: 100vh;
+  width: 100%;
+}
+
+.menu-container {
+  background-color: #333;
+  border-radius: 10px;
+  padding: 20px;
+  margin-right: 20px;
+}
+
+.sidebar {
+  width: 200px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar li {
+  cursor: pointer;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.main-content {
+  flex: 1;
+  padding-left: 20px;
+}
+
+.campeonatos-container {
+  padding: 20px;
+}
+
+.content-container {
+  display: flex;
+  gap: 20px;
+}
+
+.semi {
+  display: flex;
+  flex-direction: column;
+}
+
+.finais {
+  display: flex;
+  flex-direction: column;
+}
+
+.times-list-container {
+  width: 250px;
+  height: 900px;
+  overflow-y: auto;
+}
+
+.times-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.time-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.time-item img {
+  margin-right: 10px;
+}
+
+.chaveamentos-container {
+  width: 250px;
+}
+
+.chaveamentos-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chaveamento-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.chaveamento-time {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.chaveamento-time img {
+  margin-right: 10px;
+}

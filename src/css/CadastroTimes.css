@@ -1,0 +1,43 @@
+.cadastro-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.cadastro-form {
+  width: 400px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.lista-times {
+  width: 800px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 20px;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.lista-times table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lista-times table th,
+.lista-times table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.lista-times table th {
+  background-color: #f2f2f2;
+}
+
+.lista-times table img {
+  width: 100px;
+  height: 100px;
+}
